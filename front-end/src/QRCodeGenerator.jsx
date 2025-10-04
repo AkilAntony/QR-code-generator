@@ -12,8 +12,8 @@ function QRCodeGenerator() {
   const generate_QR = useMutation({
     mutationFn: async () => {
       const response = await axios.post(
-        // "https://generatoqrcode.onrender.com/url",
-        "http://localhost:5000/url",
+        "https://generatoqrcode.onrender.com/url",
+      
         { reqUrl },
         { responseType: "blob" }
       );
@@ -23,7 +23,6 @@ function QRCodeGenerator() {
     onSuccess: (response) => {
       if (response) {
         const fileURL = URL.createObjectURL(response);
-        console.log(fileURL, "fileURL");
         setQrcode(fileURL);
         setReqUrl("");
       }
@@ -143,7 +142,7 @@ function QRCodeGenerator() {
               <button
                 type="button"
                 onClick={handleClick}
-                disabled={!reqUrl.trim()}
+                disabled={!reqUrl.trim() || generate_QR.isPending}
                 className="w-full h-14 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-300 
                          text-white font-semibold rounded-xl transition-all duration-200 
                          transform hover:scale-[1.02] active:scale-[0.98] disabled:scale-100
@@ -163,7 +162,7 @@ function QRCodeGenerator() {
                       d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 16h4.01M12 8h4.01"
                     />
                   </svg>
-                  Generate QR Code
+                {  generate_QR.isPending ? "Generating..." : 'Generate QR Code'}
                 </span>
               </button>
             </div>
