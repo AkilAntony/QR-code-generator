@@ -13,7 +13,7 @@ function QRCodeGenerator() {
     mutationFn: async () => {
       const response = await axios.post(
         "https://generatoqrcode.onrender.com/url",
-      
+
         { reqUrl },
         { responseType: "blob" }
       );
@@ -162,7 +162,7 @@ function QRCodeGenerator() {
                       d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 16h4.01M12 8h4.01"
                     />
                   </svg>
-                {  generate_QR.isPending ? "Generating..." : 'Generate QR Code'}
+                  {generate_QR.isPending ? "Generating..." : "Generate QR Code"}
                 </span>
               </button>
             </div>
@@ -185,61 +185,17 @@ function QRCodeGenerator() {
               </div>
               <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
                 <a href={qrcode} download="qrcode.png">
-                   <button className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-colors">
-                  Download PNG
-                </button>
+                  <button className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-colors">
+                    Download PNG
+                  </button>
                 </a>
-               
               </div>
             </div>
           </div>
         )}
       </div>
     </div>
-    // <div className=" bg-zinc-100 h-[100vh]">
-    //   <div className="flex  flex-col items-center justify-center pt-20 mr-6 ml-6">
-    //     <p className="text-black text-2xl font-bold">QR code Generator</p>
-    //     <input
-    //       type="url"
-    //       name="url"
-    //       required
-    //       value={reqUrl}
-    //       onChange={(e) => setReqUrl(e.target.value)}
-    //       className="h-10 w-full md:w-1/2 bg-zinc-300
-    //                 rounded-full shadow-lg border-none outline-none m-10 p-5"
-    //     />
-    //     {warning ? (
-    //       <div
-    //         className="flex items-center
-    //         justify-center
-    //           text-red-700 text-lg md:1/2 mr-4 ml-4"
-    //       >
-    //         {warning}
-    //       </div>
-    //     ) : (
-    //       ""
-    //     )}
-    //     <button
-    //       type="button"
-    //       className="mt-6 px-10 py-2 bg-zinc-900 text-white
-    //                 rounded-xl hover:shadow-lg md:w-1/4"
-    //       onClick={handleClick}
-    //     >
-    //       Generate QR code
-    //     </button>
-    //   </div>
-
-    //   {!warning ? (
-    //     <div
-    //       className="bg black flex items-center justify-center
-    //              mt-8 border-2px border-slate-950"
-    //     >
-    //       {qrcode && <img src={qrcode} alt="QR Code" className="h-full " />}
-    //     </div>
-    //   ) : (
-    //     ""
-    //   )}
-    // </div>
+    
   );
 }
 
